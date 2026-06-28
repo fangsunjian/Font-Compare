@@ -5,6 +5,16 @@
 
 [English](README.md) | [日本語](README.ja.md) | [한국어](README.ko.md)
 
+## 截图
+
+| English | 简体中文 |
+| --- | --- |
+| ![Font Compare 英文界面](docs/screenshots/font-compare-en.jpg) | ![Font Compare 简体中文界面](docs/screenshots/font-compare-zh-CN.jpg) |
+
+| 日本語 | 한국어 |
+| --- | --- |
+| ![Font Compare 日文界面](docs/screenshots/font-compare-ja.jpg) | ![Font Compare 韩文界面](docs/screenshots/font-compare-ko.jpg) |
+
 ## ✨ 特性
 
 - **多窗口并排对比**：支持同时实时预览和对比多达 4 款字体。

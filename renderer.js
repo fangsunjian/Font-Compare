@@ -17,6 +17,7 @@ const state = {
 // Translation dictionary
 const i18n = {
   'en': {
+    app_title: 'Font Compare - Font Comparison Tool',
     subtitle: 'Professional font comparison & rendering test tool',
     text_input_title: 'Comparison Text Content',
     text_input_placeholder: 'Enter text you want to compare...',
@@ -54,6 +55,7 @@ const i18n = {
     chars: 'chars'
   },
   'zh-CN': {
+    app_title: 'Font Compare - 字体对比工具',
     subtitle: '专业字体对比与渲染测试工具',
     text_input_title: '对比文本内容',
     text_input_placeholder: '输入你想对比的文字...',
@@ -91,6 +93,7 @@ const i18n = {
     chars: '字'
   },
   'ja': {
+    app_title: 'Font Compare - フォント比較ツール',
     subtitle: 'プロフェッショナルなフォント比較とレンダリングテストツール',
     text_input_title: '比較テキストコンテンツ',
     text_input_placeholder: '比較したいテキストを入力...',
@@ -128,6 +131,7 @@ const i18n = {
     chars: '文字'
   },
   'ko': {
+    app_title: 'Font Compare - 폰트 비교 도구',
     subtitle: '전문적인 폰트 비교 및 렌더링 테스트 도구',
     text_input_title: '비교 텍스트 콘텐츠',
     text_input_placeholder: '비교할 텍스트를 입력하세요...',
@@ -347,6 +351,8 @@ function updateCardFont(card, fontFamily) {
 // Update application language
 function applyLanguage() {
   const dict = i18n[state.language] || i18n['en'];
+  document.documentElement.lang = state.language;
+  document.title = dict.app_title || i18n.en.app_title;
   
   // Update texts
   document.querySelectorAll('[data-i18n]').forEach(el => {
@@ -550,6 +556,9 @@ async function init() {
     window.electronAPI.onLanguageChanged((lang) => {
       state.language = lang;
       applyLanguage();
+      if (window.electronAPI && typeof window.electronAPI.syncMenuLanguage === 'function') {
+        window.electronAPI.syncMenuLanguage(state.language);
+      }
       saveState();
     });
   }

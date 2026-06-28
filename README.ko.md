@@ -5,6 +5,16 @@
 
 [English](README.md) | [简体中文](README.zh-CN.md) | [日本語](README.ja.md)
 
+## 스크린샷
+
+| English | 简体中文 |
+| --- | --- |
+| ![Font Compare 영어 UI](docs/screenshots/font-compare-en.jpg) | ![Font Compare 중국어 간체 UI](docs/screenshots/font-compare-zh-CN.jpg) |
+
+| 日本語 | 한국어 |
+| --- | --- |
+| ![Font Compare 일본어 UI](docs/screenshots/font-compare-ja.jpg) | ![Font Compare 한국어 UI](docs/screenshots/font-compare-ko.jpg) |
+
 ## ✨ 주요 기능
 
 - **나란히 비교**: 최대 4개의 폰트를 동시에 실시간으로 비교합니다.

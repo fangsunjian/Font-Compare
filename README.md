@@ -5,6 +5,16 @@ Perfect for designers, developers, and typography enthusiasts.
 
 [Read in Chinese (简体中文)](README.zh-CN.md) | [Read in Japanese (日本語)](README.ja.md) | [Read in Korean (한국어)](README.ko.md)
 
+## Screenshots
+
+| English | 简体中文 |
+| --- | --- |
+| ![Font Compare English UI](docs/screenshots/font-compare-en.jpg) | ![Font Compare Simplified Chinese UI](docs/screenshots/font-compare-zh-CN.jpg) |
+
+| 日本語 | 한국어 |
+| --- | --- |
+| ![Font Compare Japanese UI](docs/screenshots/font-compare-ja.jpg) | ![Font Compare Korean UI](docs/screenshots/font-compare-ko.jpg) |
+
 ## ✨ Features
 
 - **Side-by-Side Comparison**: Compare up to 4 fonts simultaneously in real-time.
