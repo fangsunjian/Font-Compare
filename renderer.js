@@ -211,9 +211,7 @@ const elements = {
     list: document.getElementById(`list-${num}`),
     canvas: document.getElementById(`render-${num}`),
     spec: document.getElementById(`spec-${num}`)
-  })),
-  
-  langSwitcher: document.getElementById('lang-switcher')
+  }))
 };
 
 // Convert Electron zoom level to human-readable percentage
@@ -519,16 +517,6 @@ async function loadSystemFonts() {
   }
 }
 
-// Setup language switcher
-function setupLanguageSwitcher() {
-  elements.langSwitcher.value = state.language;
-  elements.langSwitcher.addEventListener('change', (e) => {
-    state.language = e.target.value;
-    applyLanguage();
-    saveState();
-  });
-}
-
 // Initialize Application
 async function init() {
   isInitializing = true;
@@ -551,7 +539,20 @@ async function init() {
   }
   
   applyLanguage();
-  setupLanguageSwitcher();
+  
+  // Sync the loaded language with the Main Process native menu
+  if (window.electronAPI && typeof window.electronAPI.syncMenuLanguage === 'function') {
+    window.electronAPI.syncMenuLanguage(state.language);
+  }
+  
+  // Listen for language changes from the Main Process native menu
+  if (window.electronAPI && typeof window.electronAPI.onLanguageChanged === 'function') {
+    window.electronAPI.onLanguageChanged((lang) => {
+      state.language = lang;
+      applyLanguage();
+      saveState();
+    });
+  }
   
   // Set initial previews
   syncPreviews();

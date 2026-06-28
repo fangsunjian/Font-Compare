@@ -12,5 +12,13 @@ contextBridge.exposeInMainWorld('electronAPI', {
     return () => {
       ipcRenderer.removeListener('zoom-changed', listener);
     };
+  },
+  syncMenuLanguage: (langCode) => ipcRenderer.send('sync-menu-language', langCode),
+  onLanguageChanged: (callback) => {
+    const listener = (event, lang) => callback(lang);
+    ipcRenderer.on('change-language', listener);
+    return () => {
+      ipcRenderer.removeListener('change-language', listener);
+    };
   }
 });

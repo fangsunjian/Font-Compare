@@ -139,11 +139,49 @@ function createWindow() {
         { type: 'separator' },
         { label: '进入全屏', role: 'togglefullscreen' }
       ]
+    },
+    {
+      label: 'Language / 语言',
+      id: 'language-menu',
+      submenu: [
+        {
+          label: '简体中文',
+          type: 'radio',
+          id: 'lang-zh-CN',
+          click: () => mainWindow.webContents.send('change-language', 'zh-CN')
+        },
+        {
+          label: 'English',
+          type: 'radio',
+          id: 'lang-en',
+          click: () => mainWindow.webContents.send('change-language', 'en')
+        },
+        {
+          label: '日本語',
+          type: 'radio',
+          id: 'lang-ja',
+          click: () => mainWindow.webContents.send('change-language', 'ja')
+        },
+        {
+          label: '한국어',
+          type: 'radio',
+          id: 'lang-ko',
+          click: () => mainWindow.webContents.send('change-language', 'ko')
+        }
+      ]
     }
   ];
 
   const menu = Menu.buildFromTemplate(menuTemplate);
   Menu.setApplicationMenu(menu);
+  
+  // Listen for language sync from renderer
+  ipcMain.on('sync-menu-language', (event, langCode) => {
+    const item = menu.getMenuItemById(`lang-${langCode}`);
+    if (item) {
+      item.checked = true;
+    }
+  });
 }
 
 app.whenReady().then(() => {
