@@ -1,0 +1,19 @@
+{
+  "name": "font-compare",
+  "version": "1.0.0",
+  "description": "An Electron app to compare system fonts side by side.",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "keywords": [
+    "electron",
+    "font",
+    "compare"
+  ],
+  "author": "Antigravity",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^31.0.0"
+  }
+}
