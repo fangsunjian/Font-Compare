@@ -7,13 +7,7 @@
 
 ## スクリーンショット
 
-| English | 简体中文 |
-| --- | --- |
-| ![Font Compare 英語 UI](docs/screenshots/font-compare-en.jpg) | ![Font Compare 簡体字中国語 UI](docs/screenshots/font-compare-zh-CN.jpg) |
-
-| 日本語 | 한국어 |
-| --- | --- |
-| ![Font Compare 日本語 UI](docs/screenshots/font-compare-ja.jpg) | ![Font Compare 韓国語 UI](docs/screenshots/font-compare-ko.jpg) |
+![Font Compare 日本語 UI](docs/screenshots/font-compare-ja.jpg)
 
 ## ✨ 主な機能
 

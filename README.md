@@ -7,13 +7,7 @@ Perfect for designers, developers, and typography enthusiasts.
 
 ## Screenshots
 
-| English | 简体中文 |
-| --- | --- |
-| ![Font Compare English UI](docs/screenshots/font-compare-en.jpg) | ![Font Compare Simplified Chinese UI](docs/screenshots/font-compare-zh-CN.jpg) |
-
-| 日本語 | 한국어 |
-| --- | --- |
-| ![Font Compare Japanese UI](docs/screenshots/font-compare-ja.jpg) | ![Font Compare Korean UI](docs/screenshots/font-compare-ko.jpg) |
+![Font Compare English UI](docs/screenshots/font-compare-en.jpg)
 
 ## ✨ Features
 

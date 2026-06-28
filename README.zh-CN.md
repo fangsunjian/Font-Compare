@@ -7,13 +7,7 @@
 
 ## 截图
 
-| English | 简体中文 |
-| --- | --- |
-| ![Font Compare 英文界面](docs/screenshots/font-compare-en.jpg) | ![Font Compare 简体中文界面](docs/screenshots/font-compare-zh-CN.jpg) |
-
-| 日本語 | 한국어 |
-| --- | --- |
-| ![Font Compare 日文界面](docs/screenshots/font-compare-ja.jpg) | ![Font Compare 韩文界面](docs/screenshots/font-compare-ko.jpg) |
+![Font Compare 简体中文界面](docs/screenshots/font-compare-zh-CN.jpg)
 
 ## ✨ 特性
 
