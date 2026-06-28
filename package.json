@@ -1,6 +1,6 @@
 {
   "name": "font-compare",
-  "version": "1.0.0",
+  "version": "1.3.0",
   "description": "An Electron app to compare system fonts side by side.",
   "main": "main.js",
   "scripts": {

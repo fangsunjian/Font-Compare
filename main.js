@@ -1,4 +1,4 @@
-const { app, BrowserWindow, ipcMain, Menu } = require('electron');
+const { app, BrowserWindow, ipcMain, Menu, dialog } = require('electron');
 const path = require('path');
 const { exec } = require('child_process');
 const os = require('os');
@@ -75,7 +75,7 @@ function createWindow() {
       contextIsolation: true,
       nodeIntegration: false
     },
-    title: 'Font Compare - 字体对比工具',
+    title: 'Font Compare - 字体对比工具 v1.3.0',
     backgroundColor: '#121214'
   });
 
@@ -167,6 +167,22 @@ function createWindow() {
           type: 'radio',
           id: 'lang-ko',
           click: () => mainWindow.webContents.send('change-language', 'ko')
+        }
+      ]
+    },
+    {
+      label: '帮助',
+      submenu: [
+        {
+          label: '关于 Font Compare',
+          click: () => {
+            dialog.showMessageBox(mainWindow, {
+              type: 'info',
+              title: '关于 Font Compare',
+              message: 'Font Compare v1.3.0\n\n专业字体对比与渲染测试工具。\n由 Antigravity 开发。',
+              buttons: ['确定']
+            });
+          }
         }
       ]
     }
