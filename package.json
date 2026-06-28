@@ -13,7 +13,7 @@
     "font",
     "compare"
   ],
-  "author": "Antigravity",
+  "author": "Antigravity <antigravity@example.com>",
   "license": "MIT",
   "build": {
     "appId": "com.fangsunjian.fontcompare",
