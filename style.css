@@ -69,12 +69,36 @@ body {
   border-bottom: 1px solid var(--border-color);
 }
 
+.logo-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 6px;
+}
+
 .logo {
   display: flex;
   align-items: center;
   gap: 10px;
   color: var(--accent);
-  margin-bottom: 6px;
+}
+
+.lang-switcher {
+  background: var(--bg-input);
+  color: var(--text-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  padding: 2px 6px;
+  font-size: 11px;
+  font-family: var(--font-ui);
+  cursor: pointer;
+  outline: none;
+  transition: var(--transition-fast);
+}
+
+.lang-switcher:hover {
+  color: var(--text-primary);
+  border-color: var(--accent);
 }
 
 .logo h1 {

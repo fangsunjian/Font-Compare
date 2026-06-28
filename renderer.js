@@ -10,7 +10,160 @@ const state = {
   hasGridlines: true,
   layout: 'grid', // 'grid' or 'list'
   zoomLevel: 0, // Electron zoom level (0 = 100%)
+  language: '', // Will be detected or loaded
   fonts: []
+};
+
+// Translation dictionary
+const i18n = {
+  'en': {
+    subtitle: 'Professional font comparison & rendering test tool',
+    text_input_title: 'Comparison Text Content',
+    text_input_placeholder: 'Enter text you want to compare...',
+    preset_mixed: 'Mixed Content',
+    preset_jp: 'Japanese Kana',
+    preset_emoji: 'Emoji',
+    preset_english: 'English Alphabet',
+    global_styles_title: 'Global Font Styles',
+    font_size: 'Size',
+    line_height: 'Line Height',
+    letter_spacing: 'Spacing',
+    bold: 'Bold',
+    italic: 'Italic',
+    gridlines: 'Gridlines',
+    zoom_title: 'Window Zoom',
+    zoom_out: 'Zoom Out (Ctrl -)',
+    zoom_in: 'Zoom In (Ctrl =)',
+    zoom_reset_title: 'Reset Zoom (Ctrl 0)',
+    zoom_reset: 'Reset',
+    layout_title: 'Layout & Display',
+    layout_grid_title: 'Grid Layout',
+    layout_grid: '2x2 Grid',
+    layout_list_title: 'List Layout',
+    layout_list: 'Single Column',
+    reset_all: 'Reset All Settings',
+    loaded_fonts: 'Loaded System Fonts:',
+    search_font_placeholder: 'Enter or search system font...',
+    select_font_title: 'Select system font',
+    search_keyword_placeholder: 'Type keyword to search...',
+    loading_fonts: 'Loading fonts...',
+    config_font: 'Configured:',
+    actual_render: 'Actual Render:',
+    devtools_locked: '[DevTools locked debugging channel]',
+    no_content: 'No content / Rendering',
+    chars: 'chars'
+  },
+  'zh-CN': {
+    subtitle: '专业字体对比与渲染测试工具',
+    text_input_title: '对比文本内容',
+    text_input_placeholder: '输入你想对比的文字...',
+    preset_mixed: '经典混合',
+    preset_jp: '日文假名',
+    preset_emoji: 'Emoji表情',
+    preset_english: '英文字母',
+    global_styles_title: '全局字体样式',
+    font_size: '字号 (Size)',
+    line_height: '行高 (Line Height)',
+    letter_spacing: '字间距 (Spacing)',
+    bold: '粗体',
+    italic: '斜体',
+    gridlines: '辅助线',
+    zoom_title: '窗口缩放 (Zoom)',
+    zoom_out: '缩小 (Ctrl -)',
+    zoom_in: '放大 (Ctrl =)',
+    zoom_reset_title: '重置缩放 (Ctrl 0)',
+    zoom_reset: '重置',
+    layout_title: '布局与显示',
+    layout_grid_title: '网格布局',
+    layout_grid: '2x2 网格',
+    layout_list_title: '列表布局',
+    layout_list: '单栏列表',
+    reset_all: '重置所有设置',
+    loaded_fonts: '已加载系统字体:',
+    search_font_placeholder: '输入或搜索系统字体...',
+    select_font_title: '选择系统字体',
+    search_keyword_placeholder: '输入关键字搜索...',
+    loading_fonts: '正在加载字体...',
+    config_font: '配置:',
+    actual_render: '实际渲染:',
+    devtools_locked: '[DevTools占领调试通道]',
+    no_content: '暂无内容 / 排版中',
+    chars: '字'
+  },
+  'ja': {
+    subtitle: 'プロフェッショナルなフォント比較とレンダリングテストツール',
+    text_input_title: '比較テキストコンテンツ',
+    text_input_placeholder: '比較したいテキストを入力...',
+    preset_mixed: '混合コンテンツ',
+    preset_jp: '日本語かな',
+    preset_emoji: '絵文字',
+    preset_english: '英字',
+    global_styles_title: 'グローバルフォントスタイル',
+    font_size: 'サイズ',
+    line_height: '行の高さ',
+    letter_spacing: '文字間隔',
+    bold: '太字',
+    italic: '斜体',
+    gridlines: 'グリッド線',
+    zoom_title: 'ウィンドウのズーム',
+    zoom_out: '縮小 (Ctrl -)',
+    zoom_in: '拡大 (Ctrl =)',
+    zoom_reset_title: 'ズームをリセット (Ctrl 0)',
+    zoom_reset: 'リセット',
+    layout_title: 'レイアウトと表示',
+    layout_grid_title: 'グリッドレイアウト',
+    layout_grid: '2x2 グリッド',
+    layout_list_title: 'リストレイアウト',
+    layout_list: '単一列リスト',
+    reset_all: 'すべての設定をリセット',
+    loaded_fonts: 'ロードされたシステムフォント:',
+    search_font_placeholder: 'システムフォントを入力または検索...',
+    select_font_title: 'システムフォントを選択',
+    search_keyword_placeholder: '検索キーワードを入力...',
+    loading_fonts: 'フォントを読み込み中...',
+    config_font: '設定:',
+    actual_render: '実際のレンダリング:',
+    devtools_locked: '[DevToolsがデバッグチャネルをロック]',
+    no_content: 'コンテンツなし / レンダリング中',
+    chars: '文字'
+  },
+  'ko': {
+    subtitle: '전문적인 폰트 비교 및 렌더링 테스트 도구',
+    text_input_title: '비교 텍스트 콘텐츠',
+    text_input_placeholder: '비교할 텍스트를 입력하세요...',
+    preset_mixed: '혼합 콘텐츠',
+    preset_jp: '일본어 가나',
+    preset_emoji: '이모지',
+    preset_english: '영어 알파벳',
+    global_styles_title: '글로벌 폰트 스타일',
+    font_size: '크기',
+    line_height: '줄 높이',
+    letter_spacing: '자간',
+    bold: '굵게',
+    italic: '기울임꼴',
+    gridlines: '눈금선',
+    zoom_title: '창 확대/축소',
+    zoom_out: '축소 (Ctrl -)',
+    zoom_in: '확대 (Ctrl =)',
+    zoom_reset_title: '확대/축소 초기화 (Ctrl 0)',
+    zoom_reset: '초기화',
+    layout_title: '레이아웃 및 표시',
+    layout_grid_title: '그리드 레이아웃',
+    layout_grid: '2x2 그리드',
+    layout_list_title: '리스트 레이아웃',
+    layout_list: '단일 열 리스트',
+    reset_all: '모든 설정 초기화',
+    loaded_fonts: '로드된 시스템 폰트:',
+    search_font_placeholder: '시스템 폰트 입력 또는 검색...',
+    select_font_title: '시스템 폰트 선택',
+    search_keyword_placeholder: '검색할 키워드 입력...',
+    loading_fonts: '폰트 로드 중...',
+    config_font: '설정:',
+    actual_render: '실제 렌더링:',
+    devtools_locked: '[DevTools가 디버깅 채널 잠금]',
+    no_content: '콘텐츠 없음 / 렌더링 중',
+    chars: '자'
+  }
 };
 
 // Default fonts for the 4 slots
@@ -58,7 +211,9 @@ const elements = {
     list: document.getElementById(`list-${num}`),
     canvas: document.getElementById(`render-${num}`),
     spec: document.getElementById(`spec-${num}`)
-  }))
+  })),
+  
+  langSwitcher: document.getElementById('lang-switcher')
 };
 
 // Convert Electron zoom level to human-readable percentage
@@ -83,21 +238,23 @@ async function updateAllRenderedFonts() {
       const selectors = elements.cards.map(card => `#render-${card.num}`);
       const results = await window.electronAPI.getAllRenderedFonts(selectors);
       
+      const dict = i18n[state.language] || i18n['en'];
+      
       elements.cards.forEach(card => {
         const selector = `#render-${card.num}`;
         const specEl = card.spec;
-        let text = `配置: ${card.input.value}`;
+        let text = `${dict.config_font} ${card.input.value}`;
         
         if (results === null) {
           // Debugger is locked (DevTools is open)
-          text += ` | 实际渲染: [DevTools占领调试通道]`;
+          text += ` | ${dict.actual_render} ${dict.devtools_locked}`;
         } else {
           const fonts = results[selector];
           if (fonts && fonts.length > 0) {
-            const fontDetails = fonts.map(f => `${f.familyName} (${f.glyphCount}字)`).join(' + ');
-            text += ` | 实际渲染: ${fontDetails}`;
+            const fontDetails = fonts.map(f => `${f.familyName} (${f.glyphCount}${dict.chars})`).join(' + ');
+            text += ` | ${dict.actual_render} ${fontDetails}`;
           } else {
-            text += ` | 实际渲染: 暂无内容 / 排版中`;
+            text += ` | ${dict.actual_render} ${dict.no_content}`;
           }
         }
         
@@ -189,9 +346,43 @@ function updateCardFont(card, fontFamily) {
   updateAllRenderedFonts();
 }
 
+// Update application language
+function applyLanguage() {
+  const dict = i18n[state.language] || i18n['en'];
+  
+  // Update texts
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (dict[key]) {
+      el.textContent = dict[key];
+    }
+  });
+  
+  // Update placeholders
+  document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+    const key = el.getAttribute('data-i18n-placeholder');
+    if (dict[key]) {
+      el.setAttribute('placeholder', dict[key]);
+    }
+  });
+
+  // Update titles/tooltips
+  document.querySelectorAll('[data-i18n-title]').forEach(el => {
+    const key = el.getAttribute('data-i18n-title');
+    if (dict[key]) {
+      el.setAttribute('title', dict[key]);
+    }
+  });
+  
+  // Refresh rendered font strings
+  updateAllRenderedFonts();
+}
+
 // Save state to localStorage for persistence
 function saveState() {
-  const stateToSave = {
+  if (isInitializing) return;
+  const data = {
+    text: elements.globalTextInput.value,
     fontSize: state.fontSize,
     lineHeight: state.lineHeight,
     letterSpacing: state.letterSpacing,
@@ -200,15 +391,15 @@ function saveState() {
     hasGridlines: state.hasGridlines,
     layout: state.layout,
     zoomLevel: state.zoomLevel,
-    text: elements.globalTextInput.value,
-    cardFonts: elements.cards.map(card => card.input.value)
+    language: state.language,
+    fonts: elements.cards.map(c => c.input.value)
   };
-  localStorage.setItem('font_compare_state', JSON.stringify(stateToSave));
+  localStorage.setItem('fontCompareState', JSON.stringify(data));
 }
 
 // Load state from localStorage
 function loadState() {
-  const saved = localStorage.getItem('font_compare_state');
+  const saved = localStorage.getItem('fontCompareState') || localStorage.getItem('font_compare_state');
   if (saved) {
     try {
       const parsed = JSON.parse(saved);
@@ -221,10 +412,12 @@ function loadState() {
       if (parsed.layout !== undefined) state.layout = parsed.layout;
       if (parsed.zoomLevel !== undefined) state.zoomLevel = parsed.zoomLevel;
       if (parsed.text !== undefined) elements.globalTextInput.value = parsed.text;
+      if (parsed.language !== undefined) state.language = parsed.language;
       
-      // Load card fonts
-      if (parsed.cardFonts && Array.isArray(parsed.cardFonts)) {
-        parsed.cardFonts.forEach((font, index) => {
+      // Load card fonts (supporting both old and new schema)
+      const fontsArray = parsed.fonts || parsed.cardFonts;
+      if (fontsArray && Array.isArray(fontsArray)) {
+        fontsArray.forEach((font, index) => {
           if (elements.cards[index] && font) {
             elements.cards[index].input.value = font;
             updateCardFont(elements.cards[index], font);
@@ -326,6 +519,16 @@ async function loadSystemFonts() {
   }
 }
 
+// Setup language switcher
+function setupLanguageSwitcher() {
+  elements.langSwitcher.value = state.language;
+  elements.langSwitcher.addEventListener('change', (e) => {
+    state.language = e.target.value;
+    applyLanguage();
+    saveState();
+  });
+}
+
 // Initialize Application
 async function init() {
   isInitializing = true;
@@ -335,6 +538,20 @@ async function init() {
   
   // Load saved state (will overwrite font values if they exist)
   loadState();
+  
+  // Determine language if not loaded
+  if (!state.language && window.electronAPI && typeof window.electronAPI.getSystemLocale === 'function') {
+    const sysLocale = await window.electronAPI.getSystemLocale();
+    if (sysLocale.startsWith('zh')) state.language = 'zh-CN';
+    else if (sysLocale.startsWith('ja')) state.language = 'ja';
+    else if (sysLocale.startsWith('ko')) state.language = 'ko';
+    else state.language = 'en';
+  } else if (!state.language) {
+    state.language = 'en';
+  }
+  
+  applyLanguage();
+  setupLanguageSwitcher();
   
   // Set initial previews
   syncPreviews();

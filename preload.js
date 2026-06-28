@@ -1,6 +1,7 @@
 const { contextBridge, ipcRenderer } = require('electron');
 
 contextBridge.exposeInMainWorld('electronAPI', {
+  getSystemLocale: () => ipcRenderer.invoke('get-system-locale'),
   getSystemFonts: () => ipcRenderer.invoke('get-system-fonts'),
   setZoomLevel: (level) => ipcRenderer.invoke('set-zoom-level', level),
   getZoomLevel: () => ipcRenderer.invoke('get-zoom-level'),

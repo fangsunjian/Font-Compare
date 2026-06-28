@@ -15,35 +15,43 @@
     <!-- Sidebar Control Panel -->
     <aside class="sidebar">
       <div class="sidebar-header">
-        <div class="logo">
-          <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7V4h16v3M9 20h6M12 4v16"/></svg>
-          <h1>Font Compare</h1>
+        <div class="logo-row">
+          <div class="logo">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7V4h16v3M9 20h6M12 4v16"/></svg>
+            <h1>Font Compare</h1>
+          </div>
+          <select id="lang-switcher" class="lang-switcher">
+            <option value="en">English</option>
+            <option value="zh-CN">简体中文</option>
+            <option value="ja">日本語</option>
+            <option value="ko">한국어</option>
+          </select>
         </div>
-        <p class="subtitle">专业字体对比与渲染测试工具</p>
+        <p class="subtitle" data-i18n="subtitle">专业字体对比与渲染测试工具</p>
       </div>
 
       <div class="control-group">
-        <label class="group-title" for="global-text-input">对比文本内容</label>
-        <textarea id="global-text-input" placeholder="输入你想对比的文字...">永和九年，岁在癸丑，暮春之初，会于会稽山阴之兰亭，群贤毕至，少长咸集。
+        <label class="group-title" for="global-text-input" data-i18n="text_input_title">对比文本内容</label>
+        <textarea id="global-text-input" data-i18n-placeholder="text_input_placeholder" placeholder="输入你想对比的文字...">永和九年，岁在癸丑，暮春之初，会于会稽山阴之兰亭，群贤毕至，少长咸集。
 The quick brown fox jumps over the lazy dog.
 いろはにほへと ちりぬるを わかよたれそ つねならむ。
 🎨🍜🥷 ✨🌟🔥 0123456789 &?#@%!</textarea>
         
         <div class="preset-buttons">
-          <button class="preset-btn" data-text="永和九年，岁在癸丑，暮春之初，会于会稽山阴之兰亭，群贤毕至，少长咸集。&#10;The quick brown fox jumps over the lazy dog.&#10;いろはにほへと ちりぬるを わかよたれそ つねならむ。&#10;🎨🍜🥷 ✨🌟🔥 0123456789 &?#@%!">经典混合</button>
-          <button class="preset-btn" data-text="いろはにほへと ちりぬるを&#10;わかよたれそ つねならむ&#10;色色はにほへと ちりぬるを">日文假名</button>
-          <button class="preset-btn" data-text="🎨🍜🥷 🚀🍕🌈 🐼💻👾&#10;✨🌟🔥 💡🍀❤️ 💥🔔🎵">Emoji表情</button>
-          <button class="preset-btn" data-text="ABCDEFGHIJKLMNOPQRSTUVWXYZ&#10;abcdefghijklmnopqrstuvwxyz&#10;0123456789">英文字母</button>
+          <button class="preset-btn" data-i18n="preset_mixed" data-text="永和九年，岁在癸丑，暮春之初，会于会稽山阴之兰亭，群贤毕至，少长咸集。&#10;The quick brown fox jumps over the lazy dog.&#10;いろはにほへと ちりぬるを わかよたれそ つねならむ。&#10;🎨🍜🥷 ✨🌟🔥 0123456789 &?#@%!">经典混合</button>
+          <button class="preset-btn" data-i18n="preset_jp" data-text="いろはにほへと ちりぬるを&#10;わかよたれそ つねならむ&#10;色色はにほへと ちりぬるを">日文假名</button>
+          <button class="preset-btn" data-i18n="preset_emoji" data-text="🎨🍜🥷 🚀🍕🌈 🐼💻👾&#10;✨🌟🔥 💡🍀❤️ 💥🔔🎵">Emoji表情</button>
+          <button class="preset-btn" data-i18n="preset_english" data-text="ABCDEFGHIJKLMNOPQRSTUVWXYZ&#10;abcdefghijklmnopqrstuvwxyz&#10;0123456789">英文字母</button>
         </div>
       </div>
 
       <div class="control-group">
-        <label class="group-title">全局字体样式</label>
+        <label class="group-title" data-i18n="global_styles_title">全局字体样式</label>
         
         <!-- Font Size Slider -->
         <div class="slider-control">
           <div class="slider-header">
-            <span>字号 (Size)</span>
+            <span data-i18n="font_size">字号 (Size)</span>
             <span id="font-size-val">32px</span>
           </div>
           <input type="range" id="font-size-slider" min="12" max="120" value="32">
@@ -52,7 +60,7 @@ The quick brown fox jumps over the lazy dog.
         <!-- Line Height Slider -->
         <div class="slider-control">
           <div class="slider-header">
-            <span>行高 (Line Height)</span>
+            <span data-i18n="line_height">行高 (Line Height)</span>
             <span id="line-height-val">1.4</span>
           </div>
           <input type="range" id="line-height-slider" min="1" max="2.5" step="0.1" value="1.4">
@@ -61,7 +69,7 @@ The quick brown fox jumps over the lazy dog.
         <!-- Letter Spacing Slider -->
         <div class="slider-control">
           <div class="slider-header">
-            <span>字间距 (Spacing)</span>
+            <span data-i18n="letter_spacing">字间距 (Spacing)</span>
             <span id="letter-spacing-val">0px</span>
           </div>
           <input type="range" id="letter-spacing-slider" min="-5" max="20" value="0">
@@ -71,51 +79,51 @@ The quick brown fox jumps over the lazy dog.
         <div class="toggle-buttons">
           <button id="toggle-bold" class="toggle-btn">
             <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 4h8a4 4 0 0 1 4 4 4 4 0 0 1-4 4H6z"/><path d="M6 12h9a4 4 0 0 1 4 4 4 4 0 0 1-4 4H6z"/></svg>
-            粗体
+            <span data-i18n="bold">粗体</span>
           </button>
           <button id="toggle-italic" class="toggle-btn">
             <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="19" y1="4" x2="10" y2="4"/><line x1="14" y1="20" x2="5" y2="20"/><line x1="15" y1="4" x2="9" y2="20"/></svg>
-            斜体
+            <span data-i18n="italic">斜体</span>
           </button>
           <button id="toggle-gridlines" class="toggle-btn active">
             <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3h18v18H3z"/><path d="M3 9h18M3 15h18M9 3v18M15 3v18"/></svg>
-            辅助线
+            <span data-i18n="gridlines">辅助线</span>
           </button>
         </div>
       </div>
 
       <div class="control-group">
-        <label class="group-title">窗口缩放 (Zoom)</label>
+        <label class="group-title" data-i18n="zoom_title">窗口缩放 (Zoom)</label>
         <div class="zoom-controls">
-          <button id="zoom-out-btn" class="zoom-btn" title="缩小 (Ctrl -)">
+          <button id="zoom-out-btn" class="zoom-btn" data-i18n-title="zoom_out" title="缩小 (Ctrl -)">
             <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/></svg>
           </button>
           <span id="zoom-level-val">100%</span>
-          <button id="zoom-in-btn" class="zoom-btn" title="放大 (Ctrl =)">
+          <button id="zoom-in-btn" class="zoom-btn" data-i18n-title="zoom_in" title="放大 (Ctrl =)">
             <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
           </button>
-          <button id="zoom-reset-btn" class="zoom-reset" title="重置缩放 (Ctrl 0)">重置</button>
+          <button id="zoom-reset-btn" class="zoom-reset" data-i18n-title="zoom_reset_title" data-i18n="zoom_reset" title="重置缩放 (Ctrl 0)">重置</button>
         </div>
         <input type="range" id="zoom-slider" min="-3" max="5" step="0.5" value="0" class="zoom-slider">
       </div>
 
       <div class="control-group">
-        <label class="group-title">布局与显示</label>
+        <label class="group-title" data-i18n="layout_title">布局与显示</label>
         <div class="layout-toggle">
-          <button id="layout-grid-btn" class="layout-btn active" title="网格布局">
+          <button id="layout-grid-btn" class="layout-btn active" data-i18n-title="layout_grid_title" title="网格布局">
             <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
-            2×2 网格
+            <span data-i18n="layout_grid">2×2 网格</span>
           </button>
-          <button id="layout-list-btn" class="layout-btn" title="列表布局">
+          <button id="layout-list-btn" class="layout-btn" data-i18n-title="layout_list_title" title="列表布局">
             <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
-            单栏列表
+            <span data-i18n="layout_list">单栏列表</span>
           </button>
         </div>
       </div>
 
       <div class="sidebar-footer">
-        <button id="reset-all-btn" class="danger-btn">重置所有设置</button>
-        <div class="font-count-tag">已加载系统字体: <span id="font-count">--</span></div>
+        <button id="reset-all-btn" class="danger-btn" data-i18n="reset_all">重置所有设置</button>
+        <div class="font-count-tag"><span data-i18n="loaded_fonts">已加载系统字体:</span> <span id="font-count">--</span></div>
       </div>
     </aside>
 
@@ -127,22 +135,22 @@ The quick brown fox jumps over the lazy dog.
           <div class="card-title-group">
             <span class="card-number">1</span>
             <div class="custom-select-container" id="select-container-1">
-              <input type="text" class="font-name-input" id="input-1" placeholder="输入或搜索系统字体..." value="Microsoft YaHei">
-              <button class="dropdown-trigger" id="trigger-1" title="选择系统字体">
+              <input type="text" class="font-name-input" id="input-1" data-i18n-placeholder="search_font_placeholder" placeholder="输入或搜索系统字体..." value="Microsoft YaHei">
+              <button class="dropdown-trigger" id="trigger-1" data-i18n-title="select_font_title" title="选择系统字体">
                 <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
               </button>
               <div class="dropdown-menu" id="menu-1">
                 <div class="dropdown-search-wrapper">
-                  <input type="text" class="dropdown-search" id="search-1" placeholder="输入关键字搜索...">
+                  <input type="text" class="dropdown-search" id="search-1" data-i18n-placeholder="search_keyword_placeholder" placeholder="输入关键字搜索...">
                 </div>
                 <div class="dropdown-list" id="list-1">
-                  <div class="dropdown-item loading">正在加载字体...</div>
+                  <div class="dropdown-item loading" data-i18n="loading_fonts">正在加载字体...</div>
                 </div>
               </div>
             </div>
           </div>
           <div class="card-actions">
-            <button class="card-action-btn copy-btn" title="复制字体名称" data-target="input-1">
+            <button class="card-action-btn copy-btn" data-i18n-title="copy_font_title" title="复制字体名称" data-target="input-1">
               <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
             </button>
           </div>
@@ -161,22 +169,22 @@ The quick brown fox jumps over the lazy dog.
           <div class="card-title-group">
             <span class="card-number">2</span>
             <div class="custom-select-container" id="select-container-2">
-              <input type="text" class="font-name-input" id="input-2" placeholder="输入或搜索系统字体..." value="Cascadia Mono">
-              <button class="dropdown-trigger" id="trigger-2" title="选择系统字体">
+              <input type="text" class="font-name-input" id="input-2" data-i18n-placeholder="search_font_placeholder" placeholder="输入或搜索系统字体..." value="Cascadia Mono">
+              <button class="dropdown-trigger" id="trigger-2" data-i18n-title="select_font_title" title="选择系统字体">
                 <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
               </button>
               <div class="dropdown-menu" id="menu-2">
                 <div class="dropdown-search-wrapper">
-                  <input type="text" class="dropdown-search" id="search-2" placeholder="输入关键字搜索...">
+                  <input type="text" class="dropdown-search" id="search-2" data-i18n-placeholder="search_keyword_placeholder" placeholder="输入关键字搜索...">
                 </div>
                 <div class="dropdown-list" id="list-2">
-                  <div class="dropdown-item loading">正在加载字体...</div>
+                  <div class="dropdown-item loading" data-i18n="loading_fonts">正在加载字体...</div>
                 </div>
               </div>
             </div>
           </div>
           <div class="card-actions">
-            <button class="card-action-btn copy-btn" title="复制字体名称" data-target="input-2">
+            <button class="card-action-btn copy-btn" data-i18n-title="copy_font_title" title="复制字体名称" data-target="input-2">
               <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
             </button>
           </div>
@@ -195,22 +203,22 @@ The quick brown fox jumps over the lazy dog.
           <div class="card-title-group">
             <span class="card-number">3</span>
             <div class="custom-select-container" id="select-container-3">
-              <input type="text" class="font-name-input" id="input-3" placeholder="输入或搜索系统字体..." value="SimSun">
-              <button class="dropdown-trigger" id="trigger-3" title="选择系统字体">
+              <input type="text" class="font-name-input" id="input-3" data-i18n-placeholder="search_font_placeholder" placeholder="输入或搜索系统字体..." value="SimSun">
+              <button class="dropdown-trigger" id="trigger-3" data-i18n-title="select_font_title" title="选择系统字体">
                 <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
               </button>
               <div class="dropdown-menu" id="menu-3">
                 <div class="dropdown-search-wrapper">
-                  <input type="text" class="dropdown-search" id="search-3" placeholder="输入关键字搜索...">
+                  <input type="text" class="dropdown-search" id="search-3" data-i18n-placeholder="search_keyword_placeholder" placeholder="输入关键字搜索...">
                 </div>
                 <div class="dropdown-list" id="list-3">
-                  <div class="dropdown-item loading">正在加载字体...</div>
+                  <div class="dropdown-item loading" data-i18n="loading_fonts">正在加载字体...</div>
                 </div>
               </div>
             </div>
           </div>
           <div class="card-actions">
-            <button class="card-action-btn copy-btn" title="复制字体名称" data-target="input-3">
+            <button class="card-action-btn copy-btn" data-i18n-title="copy_font_title" title="复制字体名称" data-target="input-3">
               <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
             </button>
           </div>
@@ -229,22 +237,22 @@ The quick brown fox jumps over the lazy dog.
           <div class="card-title-group">
             <span class="card-number">4</span>
             <div class="custom-select-container" id="select-container-4">
-              <input type="text" class="font-name-input" id="input-4" placeholder="输入或搜索系统字体..." value="Segoe UI">
-              <button class="dropdown-trigger" id="trigger-4" title="选择系统字体">
+              <input type="text" class="font-name-input" id="input-4" data-i18n-placeholder="search_font_placeholder" placeholder="输入或搜索系统字体..." value="Segoe UI">
+              <button class="dropdown-trigger" id="trigger-4" data-i18n-title="select_font_title" title="选择系统字体">
                 <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
               </button>
               <div class="dropdown-menu" id="menu-4">
                 <div class="dropdown-search-wrapper">
-                  <input type="text" class="dropdown-search" id="search-4" placeholder="输入关键字搜索...">
+                  <input type="text" class="dropdown-search" id="search-4" data-i18n-placeholder="search_keyword_placeholder" placeholder="输入关键字搜索...">
                 </div>
                 <div class="dropdown-list" id="list-4">
-                  <div class="dropdown-item loading">正在加载字体...</div>
+                  <div class="dropdown-item loading" data-i18n="loading_fonts">正在加载字体...</div>
                 </div>
               </div>
             </div>
           </div>
           <div class="card-actions">
-            <button class="card-action-btn copy-btn" title="复制字体名称" data-target="input-4">
+            <button class="card-action-btn copy-btn" data-i18n-title="copy_font_title" title="复制字体名称" data-target="input-4">
               <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
             </button>
           </div>

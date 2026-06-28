@@ -174,6 +174,10 @@ ipcMain.handle('get-system-fonts', async () => {
   return await getSystemFonts();
 });
 
+ipcMain.handle('get-system-locale', () => {
+  return app.getLocale();
+});
+
 ipcMain.handle('set-zoom-level', (event, zoomLevel) => {
   if (mainWindow) {
     mainWindow.webContents.setZoomLevel(zoomLevel);
