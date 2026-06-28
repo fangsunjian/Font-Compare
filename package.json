@@ -1,6 +1,6 @@
 {
   "name": "font-compare",
-  "version": "1.3.2",
+  "version": "1.3.3",
   "description": "An Electron app to compare system fonts side by side.",
   "main": "main.js",
   "scripts": {
@@ -13,7 +13,7 @@
     "font",
     "compare"
   ],
-  "author": "fangsunjian",
+  "author": "fangsunjian <fangsunjian@users.noreply.github.com>",
   "license": "MIT",
   "build": {
     "appId": "com.fangsunjian.fontcompare",
