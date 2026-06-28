@@ -5,6 +5,9 @@ on:
     tags:
       - 'v*' # Trigger on tags starting with "v", e.g. v1.0.0
 
+permissions:
+  contents: write  # Required to create releases
+
 jobs:
   build:
     name: Build and Release
@@ -29,7 +32,7 @@ jobs:
       - name: Build & Publish Release
         uses: samuelmeuli/action-electron-builder@v1
         with:
-          github_token: ${{ secrets.github_token }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
           mac_certs: ${{ secrets.mac_certs }}
           mac_certs_password: ${{ secrets.mac_certs_password }}
           release_install: false
